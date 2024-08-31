@@ -1,0 +1,20 @@
+<h3 class="text-center">Detalles</h1>
+
+<div class="d-flex-column flex-wrap text-center">
+{{#if product}}
+  <h2>{{product.title}}</h2>
+  <p>{{product.description}}</p>
+  <p>{{product.price}}</p>
+  <p>{{product.stock}}</p>
+  <p>{{product.code}}</p>
+  <p>{{product._id}}</p>
+
+  <div id="btnCart">
+    <button>
+      Agregar al carrito
+    </button>
+  </div>
+<div id="irCarrito"><a href="#">Ver Carrito</a></div>
+<a href="/api/products">Volver a Productos</a>
+{{/if}}
+</div>

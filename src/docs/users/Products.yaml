@@ -1,0 +1,211 @@
+paths:
+  /api/products:
+    get:
+      summary: Obtenemos todos los productos de la base de datos
+      tags: 
+        - Products
+      responses: 
+        "200":
+          description: Se obtiene todos los productos correctamente
+          content: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Product"                
+        "500":
+          description: Error interno del servidor
+    post:
+      summary: este endpoint crea un nuevo producto
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/createProduct"
+      responses:
+        "201":
+          description: Producto creado correctamente
+        "500":
+          description: Error interno del servidor
+     
+  /api/products/{uid}:
+    get:
+      summary: Obtiene un solo producto por ID
+      tags: 
+        - Products
+      parameters:
+      - name: uid
+        in: path
+        required: true
+        description: Id del producto que se quire solicitar
+        schema:
+          $type: String
+      responses: 
+        "200":
+          description: Producto encontrado
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Product"
+        "500":
+          description: Error interno del servidor
+
+    delete:  
+      summary: Se obtiene un solo producto por ID que se desea eliminar
+      tags: 
+        - Products
+      parameters:
+      - name: uid
+        in: path
+        required: true
+        description: Id del producto que se desea eliminar
+        schema:
+          $type: String 
+      responses: 
+        "200":
+          description: Producto eliminado
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#components/schemas/Product"
+        "500":
+          description: Error interno del servidor
+
+    put:
+      summary: Se obtiene un producto y se lo edita (o actualiza)
+      tags:
+       - Products
+      parameters:
+      - name: uid
+        in: path
+        required: true
+        description: Id del producto que se desea editar (o actualizar)
+        schema:
+          $type: String 
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/updateProduct"
+      responses:
+        "200":
+          description: Producto actualizado
+          content:
+            application/json:
+              schema:
+                type: array
+              items:
+                  $ref: "#components/schemas/Product"
+        "500":
+          description: "Error interno del servidor"
+
+
+components: 
+  schemas: 
+    Product:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: ID autogenerado por MongoDb
+        title: 
+          type: string
+          description: Nombre del producto
+        price: 
+          type: Number
+          description: Precio del producto
+        img:
+          type: string
+          description: Imagen del Producto
+        code: 
+          type: string
+          unique: true
+          description: Código único de cada producto
+        stock: 
+          type: Number
+          description: Cantidad disponible del producto en cuestión
+        category:
+          type: String
+          description: Categoría a la que pertenece el producto
+        status:
+          type: boolean
+        thumbnails:
+          type: array
+        
+      example:
+        _id: ObjectId("12345")
+        title: Torre de sonido Stromberg
+        price: 100000
+        img: "Imagen"
+        code: "abc123"
+        stock: 50000
+        category: "Sonido"
+        status: true
+        thumbnails: []
+
+  requestBodies: 
+    createProduct:
+      type: object
+      properties:
+        title: 
+          type: string
+          description: Nombre del producto
+        price: 
+          type: Number
+          description: Precio del producto
+        img:
+          type: string
+          description: Imagen del Producto
+        stock: 
+          type: Number
+          description: Cantidad disponible del producto en cuestión
+        category:
+          type: String
+          description: Categoría a la que pertenece el producto
+
+      example: 
+        title: Torre de sonido Stromberg
+        price: 100000
+        img: "Imagen"
+        stock: 50000
+        category: "Sonido"
+    
+    updateProduct :
+      type: object
+      properties:
+        title: 
+          type: string
+          description: Nombre del producto
+        price: 
+          type: Number
+          description: Precio del producto
+        img:
+          type: string
+          description: Imagen del Producto
+        stock: 
+          type: Number
+          description: Cantidad disponible del producto en cuestión
+        category:
+          type: String
+          description: Categoría a la que pertenece el producto
+
+      example: 
+        title: Torre de sonido Stromberg
+        price: 100000
+        img: "Imagen"
+        stock: 50000
+        category: "Sonido"
+
+        
+
+
+
+        

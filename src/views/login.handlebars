@@ -1,0 +1,44 @@
+<h1 class="text-center">Login</h1>
+<div id="loginContainer">
+
+  <h3 class="text-center">Login with E-mail</h3>
+  <div class="divFormLoginContainer px-5">
+    <form
+      class="px-5"
+      action="api/users/login"
+      id="formLoginContainer"
+      method="POST"
+    >
+      <div class="form-floating mb-3 divInputEmail">
+        <input
+          name="email"
+          type="email"
+          class="form-control"
+          id="floatingInputEmail"
+          placeholder="name@example.com"
+        />
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating divInputPassword">
+        <input
+          name="password"
+          type="password"
+          class="form-control"
+          id="floatingInputPassword"
+          placeholder="Password"
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+      <div class="text-center m-3">
+        <button
+          type="submit"
+          class="btn btn-primary text-center btnLogin"
+        >Login</button>
+      </div>
+    </form>
+  </div>
+  <div class="text-center m-3">
+    <h3>¿No has creado aún el usuario?</h3>
+    <p><a href="/register">Registrate</a></p>
+  </div>
+</div>

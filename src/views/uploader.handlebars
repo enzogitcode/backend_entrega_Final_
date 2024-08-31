@@ -1,0 +1,23 @@
+{{#if user}}
+<h1 class="text-center py-3">Cargar documentación</h1>
+<p>{{user.user._id}}</p>
+<form
+  class="d-flex flex-column mx-5 text-center justify-content-center"
+  action="/api/users/{{user.user._id}}/documents"
+  method="post"
+  enctype="multipart/form-data"
+>
+  <label for="profileMulter">Profile</label>
+  <input class="text-center border my-3" type="file" name="profile" id="profileMulter" />
+  <label for="documentsMulter">Documents: "Identificación"</label>
+  <input class="text-center border my-3" type="file" name="documents" id="documentsMulter" />
+  <label for="documentsMulter">Documents: "Comprobante de domicilio"</label>
+  <input class="text-center border my-3" type="file" name="documents" id="documentsMulter" />
+  <label for="documentsMulter">Documents: "Comprobante de estado de cuenta"</label>
+  <input class="text-center border my-3" type="file" name="documents" id="documentsMulter" />
+
+  <label for="productsMulter">Products</label>
+  <input class="text-center border my-3" type="file" name="products" id="productsMulter" />
+<button type="submit">Enviar</button>
+</form>
+{{/if}}

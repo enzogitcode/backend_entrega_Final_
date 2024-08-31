@@ -1,0 +1,73 @@
+<h1 class="text-center"> Registro de Usuarios </h1>
+<div id="registerContainer">
+  <h3 class="text-center">Register</h3>
+  <div class="divFormLoginContainer px-5">
+    <form class="px-5" action="api/users/register" id="formRegisterContainer" method="POST">
+      {{! first name }}
+      <div class="form-floating mb-3 divInputFirstName">
+        <input
+          name="first_name"
+          type="text"
+          class="form-control"
+          id="first_name"
+          placeholder="John"
+        />
+        <label for="floatingFirst_name">First Name</label>
+      </div>
+      {{! last name }}
+      <div class="form-floating mb-3 divInputFirstName">
+        <input
+          name="last_name"
+          type="text"
+          class="form-control"
+          id="last_name"
+          placeholder="Doe"
+        />
+        <label for="floatingLast_name">Last Name</label>
+      </div>
+      {{! age }}
+      <div class="form-floating mb-3 divInputFirstName">
+        <input
+          name="age"
+          type="number"
+          class="form-control"
+          id="age"
+          placeholder="ej. 30"
+        />
+        <label for="floatingAge">Age</label>
+      </div>
+      {{! email }}
+      <div class="form-floating mb-3 divInputFirstName">
+        <input
+          name="email"
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="name@example.com"
+        />
+        <label for="floatingFirst_name">Email address</label>
+      </div>
+      {{! password }}
+      <div class="form-floating divInputPassword">
+        <input
+          name="password"
+          type="password"
+          class="form-control"
+          id="floatingInputPassword"
+          placeholder="Password"
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+      <div class="text-center m-3">
+        <button
+          type="submit"
+          class="btn btn-primary text-center btnLogin"
+        >Register</button>
+      </div>
+    </form>
+  </div>
+  <div class="text-center m-3">
+    <h3>¿Ya tienes un usuario creado?</h3>
+    <a href="/login">Login</a>
+  </div>
+</div>

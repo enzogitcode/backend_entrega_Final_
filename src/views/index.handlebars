@@ -1,0 +1,24 @@
+<h1 class="text-center">Island</h1>
+<h2 class="text-center">Lista de productos</h2>
+
+{{!-- {{#if user}}
+<div>
+    <p>Bienvenido!, {{user.first_name}} {{user.last_name}}!</p>
+    <p>Usuario: {{user.email}}</p>
+    <p>Rol: {{user.role}} </p>
+    <a href="/api/sessions/logout">Logout</a>
+</div>
+{{/if}} --}}
+<div class="text-center align-self-center justify-content-center space-evenly d-flex flex-wrap">
+    {{>card}}
+</div>
+{{!-- <div class="divPaginate text-wrap">
+    {{#if hasPrevPage}}
+    <a href="{{prevLink}}"> Anterior </a>
+    {{/if}}
+
+    {{#if hasNextPage}}
+    <a href="{{nextLink}}"> Siguiente </a>
+    {{/if}}
+    <p>Pagina {{currentPage}} de {{totalPages}} </p>
+</div> --}}

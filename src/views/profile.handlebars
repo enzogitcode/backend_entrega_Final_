@@ -1,0 +1,15 @@
+<h2>Ingresaste al Profile</h2>
+
+{{#if user}}
+<p>Bienvenido {{user.first_name}} {{user.last_name}}</p>
+<p>Usuario: {{user.email}}</p>
+<p>Rol: {{user.role}}</p>
+<a href="/uploader">Cargar documentación</a>
+
+{{/if}}
+
+<form action="/api/users/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+
+<a href="/api/products">Ver productos</a>
