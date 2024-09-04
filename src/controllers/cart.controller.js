@@ -132,7 +132,7 @@ class CartController {
 
     }
     async purchase(req, res) {
-        const cartId= req.params.cid
+        const cartId = req.params.cid
         try {
             const cart = await cartRepository.getCartById(cartId)
             if (!cart) {
@@ -154,15 +154,15 @@ class CartController {
                     notAvaibles.push(productId)
                 }
             }
-            
+
             console.log(notAvaibles)
-            
-            
+
+
             const userCarts = await UserModel.findOne({ carts: cartId });
             if (!userCarts) {
                 res.json({ message: "No existe el usuario" })
             }
-            
+
             const newTicket = await TicketModel.create({
                 purchaser: userCarts._id,
                 code: ticketCode(),
@@ -170,21 +170,19 @@ class CartController {
                 amount: totalPurchase(totalProducts),
             })
             cart.products = cart.products.filter(item => notAvaibles.some(productId => productId.equals(item.product)));
-            
-            await newTicket.save() 
-            
+
+            await newTicket.save()
+
             await cartRepository.clearCart(cartId)
 
             res.json(newTicket)
-            
+
         } catch (error) {
             console.log(error)
             res.json(error)
         }
-
-
-
     }
+    
 }
 
 export default CartController

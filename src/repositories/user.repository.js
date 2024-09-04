@@ -31,6 +31,15 @@ class UserRepository {
         }
 
     }
+    async getAllUsers() {
+        try {
+            const users = await UserModel.find().lean()
 
+            return users
+        } catch (error) {
+
+        }
+    }
+    
 }
 export default UserRepository

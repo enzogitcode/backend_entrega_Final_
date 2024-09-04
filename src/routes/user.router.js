@@ -24,5 +24,6 @@ userController.uploadFiles)
 router.put("/premium/:uid", userController.changeRole)
 router.put("/cleardocs/:uid", userController.clearDocs)
 router.delete("/:uid", userController.deleteUser)
+router.delete("/", userController.deleteInactivesUsers)
 
 export default router

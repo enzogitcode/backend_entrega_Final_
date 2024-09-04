@@ -76,7 +76,7 @@ class UserController {
 
                 maxAge: 3600000,
                 httpOnly: true
-            }).json({user})
+            }).json({ user })
             //este redirect funciona
         } catch (error) {
             res.json(error)
@@ -106,7 +106,7 @@ class UserController {
                     updatedUser.last_connection = new Date();
                     await updatedUser.save()
                 }
-                res.clearCookie("coderCookieToken").json({updatedUser})
+                res.clearCookie("coderCookieToken").json({ updatedUser })
             }
             else {
                 res.send({ message: "No se encuentra el token" })
@@ -191,7 +191,7 @@ class UserController {
     }
     async getAllUsers(req, res) {
         try {
-            const users = await UserModel.find()
+            const users = await userRepository.getAllUsers()
             res.json(users)
         } catch (error) {
             res.status(500).send({ message: "No se pueden ver los usuarios" }, error)
@@ -296,6 +296,21 @@ class UserController {
             console.log(error)
 
         }
+    }
+    async deleteInactivesUsers(req, res) {
+        try {
+
+            const deletedUsers = await UserModel.deleteMany({ last_connection: { $lte: (Date.now() - 172800000) } })
+            const activeUsers = await userRepository.getAllUsers()
+
+            console.log({ deletedUsers: deletedUsers }, { activeUsers: activeUsers })
+            res.status(200).json(deletedUsers, activeUsers)
+
+        } catch (error) {
+            console.log(error)
+            res.status(500).send("error en el servidor")
+        }
+
     }
 }
 
